@@ -1,5 +1,4 @@
 #include "BH1750FVI.h"
-#include <Wire.h>
 
 void BH1750FVI::begin(byte addr)
 {
@@ -34,7 +33,7 @@ uint16_t BH1750FVI::Illumination()
   // typical read delay 120m
   delay(120);
  
-  Wire.requestFrom(_ADDR, 2); // 2byte every time
+  Wire.requestFrom((int)_ADDR, (int)2); // 2byte every time
 
   for (val=0; Wire.available()>=1; ) {
     char c = Wire.read();
